@@ -12,10 +12,10 @@ const HomePage = () => {
     return (
         <>
 
-            <ButtonAppBar />
+            {/* <ButtonAppBar /> */}
 
             <React.Fragment>
-                <CssBaseline />
+                {/* <CssBaseline />
 
                 <Container maxWidth="xl">
                 
@@ -26,7 +26,7 @@ const HomePage = () => {
 
 
                     </Box>
-                </Container>
+                </Container> */}
             </React.Fragment>
         </>
 
