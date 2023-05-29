@@ -10,10 +10,15 @@ import SignUp from "./template/SignUp.js";
 import TabPanel from "./Tabs/tabs"
 
 
+
+
+
+
 function App() {
   return (
 <>
 
+  
 <BrowserRouter>
 <Routes>
 
@@ -26,8 +31,10 @@ function App() {
 
  </Routes>
 </BrowserRouter>
-    
+
+
     </>
+    
   );
 }
 
