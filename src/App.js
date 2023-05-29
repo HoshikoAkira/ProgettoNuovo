@@ -8,6 +8,7 @@ import SignIn from "./template/SignIn.js";
 import SignUp from "./template/SignUp.js";
 
 import TabPanel from "./Tabs/tabs"
+import TabNuovo from "./Tabs/TabNuovo"
 
 
 
@@ -27,6 +28,8 @@ function App() {
     <Route exact path="/sign-up" element={<SignUp/>}/>
 
     <Route exact path="/sondaggi" element={<TabPanel/>} />
+    <Route exact path="/Nuovo" element={<TabNuovo/>} />
+
 
 
  </Routes>
