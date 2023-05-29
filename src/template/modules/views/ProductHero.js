@@ -2,7 +2,7 @@ import * as React from 'react';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
 import ProductHeroLayout from './ProductHeroLayout';
-import { Padding } from '@mui/icons-material';
+// import { Padding } from '@mui/icons-material';
 
 const backgroundImage =
   'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400';
@@ -22,7 +22,7 @@ export default function ProductHero() {
         src={backgroundImage}
         alt="increase priority"
       />
-      <Typography color="inherit" align="center" variant="h2" marked="center">
+      <Typography color="inherit" align="center" variant="h2" >
        Descrizione (ProductHero)
       </Typography>
       {/* <Typography
@@ -34,7 +34,7 @@ export default function ProductHero() {
         Enjoy secret offers up to -70% off the best luxury hotels every Sunday.
       </Typography> */}
       <Button
-        color="secondary"
+        color="ternary"
         variant="contained"
         size="large"
         component="a"

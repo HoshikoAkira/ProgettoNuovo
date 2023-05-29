@@ -13,7 +13,7 @@ const rightLink = {
 function AppAppBar() {
   return (
     <div>
-      <AppBar position="fixed">
+      <AppBar position="fixed" sx={{bgcolor:"#28282a"}}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }} />
           <Link

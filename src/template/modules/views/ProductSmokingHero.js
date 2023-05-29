@@ -23,15 +23,15 @@ function ProductSmokingHero() {
           Got any questions? Need help?
         </Typography>
       </Button>
-      <Typography variant="subtitle1" sx={{ my: 3 }}>
+      {/* <Typography variant="subtitle1" sx={{ my: 3 }}>
         We are here to help. Get in touch!
-      </Typography>
-      <Box
+      </Typography> */}
+      {/* <Box
         component="img"
         src="/static/themes/onepirate/productBuoy.svg"
-        alt="buoy"
+        // alt="buoy"
         sx={{ width: 60 }}
-      />
+      /> */}
     </Container>
   );
 }
