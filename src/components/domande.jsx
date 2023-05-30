@@ -11,6 +11,8 @@ import { useParams } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
+import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
+
 
 
 const BottoneElimina = (props) => {
@@ -128,6 +130,7 @@ export default function DataGridDemo() {
         };
 
     return (
+
          <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={domande}
@@ -139,7 +142,7 @@ export default function DataGridDemo() {
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
         />
-
+       <AppAppBarAdmin/>
          </Box>
 
     );

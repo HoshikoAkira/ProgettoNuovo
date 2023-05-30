@@ -23,7 +23,7 @@ function AppAppBar() {
             href="/"
             sx={{ fontSize: 24 }}
           >
-            {'onepirate'}
+            {'Telematica Informatica'}
           </Link>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <Link
@@ -35,14 +35,14 @@ function AppAppBar() {
             >
               {'Sign In'}
             </Link>
-            <Link
+            {/* <Link
               variant="h6"
               underline="none"
               href="/sign-up"
               sx={{ ...rightLink, color: 'secondary.main' }}
             >
               {'Sign Up'}
-            </Link>
+            </Link> */}
           </Box>
         </Toolbar>
       </AppBar>

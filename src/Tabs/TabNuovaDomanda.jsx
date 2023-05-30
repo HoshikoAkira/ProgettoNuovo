@@ -58,7 +58,7 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           
-          <Tab label="Aggiungi domande" {...a11yProps(0)} />
+          <Tab label="Aggiungi domanda" {...a11yProps(0)} />
 
         </Tabs>
       </Box>

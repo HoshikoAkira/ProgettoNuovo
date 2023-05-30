@@ -8,12 +8,15 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import BasicSelect from './BasicSelect';
-import ResponsiveDatePickers from "./Date"
 import dayjs from 'dayjs';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
+
+const dataOggi =dayjs();
+console.log(dataOggi);
 
 
 export default function VediSondaggio() {
@@ -148,8 +151,8 @@ export default function VediSondaggio() {
                             label="Data Inizio"
                             minDate={dayjs('2020-01-01')}
                             maxDate={dayjs('2030-01-01')}
-                            value={dataInizio}
-                            inputFormat="DD/MM/YYYY"
+                            value={dataOggi}
+                            format="DD/MM/YYYY"
 
                             onChange={(e) => {
                                 setDataInizio(e)
@@ -160,8 +163,8 @@ export default function VediSondaggio() {
                             label="Data Fine"
                             minDate={dayjs('2020-01-01')}
                             maxDate={dayjs('2030-01-01')}
-                            value={dataFine}
-                            inputFormat="DD/MM/YYYY"
+                            value={dataOggi}
+                            format="DD/MM/YYYY"
 
                             onChange={(e) => {
                                 setDataFine(e)
@@ -197,6 +200,9 @@ export default function VediSondaggio() {
             </div>
                 {/*-------------  Bottoni aggiorna ed elimina------------- */}
                 <div>
+
+                <AppAppBarAdmin/>
+
 
                     <Button
                         type='submit'

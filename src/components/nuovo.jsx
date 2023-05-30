@@ -10,6 +10,7 @@ import { Button } from "@mui/material";
 import ResponsiveDatePickers from "./Date"
 import { useNavigate } from 'react-router-dom';
 import AppAppBar from '../template/modules/views/AppAppBarAdmin';
+import AppAppBarAdmin from '../template/modules/views/AppAppBarAdmin'
 
 export default function Nuovo() {
 
@@ -123,7 +124,7 @@ export default function Nuovo() {
 
   return (
 
-   
+
 
     <Box
       sx={{ '& .MuiTextField-root': { m: 1, width: '55ch' } }}
@@ -175,7 +176,8 @@ export default function Nuovo() {
         {/* METTERE IL DATE PICKER PER INTERO COME IN VEDISONDAGGIO */}
         <div>
           <ResponsiveDatePickers />
-          
+          <AppAppBarAdmin/>
+          {/* AppAppBarAdmin per richiamare la tab nuovo */}
         </div>
 
         <TextField

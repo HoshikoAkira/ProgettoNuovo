@@ -22,7 +22,7 @@ function AppAppBar() {
           <Box sx={{flex: 0, justifyContent: 'space-between' }}/>
 
           <Typography variant="h6" component={"div"} sx={{ flexGrow: 0 }}>
-          <Button  color="inherit" href="/" >HOME</Button>
+          {/* <Button  color="inherit" href="/" >HOME</Button> */}
           </Typography>
           <Button color="inherit" href="/sondaggi">Sondaggi</Button>
           <Button color="inherit" href='/nuovo'>Nuovo</Button>
@@ -53,10 +53,10 @@ function AppAppBar() {
             <Link
               variant="h6"
               underline="none"
-              href="/sign-up"
+              // href="/sign-up"
               sx={{ ...rightLink, color: 'secondary.main' }}
             >
-              {'Sign Up'}
+              {'Logout'}
             </Link>
           </Box>
         </Toolbar>

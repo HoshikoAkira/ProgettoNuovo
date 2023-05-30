@@ -9,7 +9,10 @@ import SignUp from "./template/SignUp.js";
 
 import TabPanel from "./Tabs/tabs"
 import TabNuovo from "./Tabs/TabNuovo"
-
+import TabSondaggio from "./Tabs/TabSondaggio"
+import TabDomande from "./Tabs/TabDomande"
+import TabModificaDomanda from "./Tabs/tabModificaDomanda"
+import TabNuovaDomanda from "./Tabs/TabNuovaDomanda"
 
 
 
@@ -28,7 +31,12 @@ function App() {
     <Route exact path="/sign-up" element={<SignUp/>}/>
 
     <Route exact path="/sondaggi" element={<TabPanel/>} />
+    <Route exact path="/VediSondaggio/:id" element={<TabSondaggio/>} /> 
+    <Route exact path="/domande/:id" element={<TabDomande/>} />
+    <Route exact path="/ModificaDomanda/:id" element={<TabModificaDomanda/>} />
     <Route exact path="/Nuovo" element={<TabNuovo/>} />
+    <Route exact path="/InserisciDomande/:id" element={<TabNuovaDomanda/>} />
+
 
 
 

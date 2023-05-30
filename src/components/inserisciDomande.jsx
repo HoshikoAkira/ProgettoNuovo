@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Delete } from '@mui/icons-material';
-
+import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
 
 
 export default function InserisciDomande() {
@@ -125,6 +125,8 @@ export default function InserisciDomande() {
   return (
 
     <div>
+      <AppAppBarAdmin/>
+
       <form onSubmit={handleSubmit}>
         <Box sx={{ '& .MuiTextField-root': { m: 1, width: '55ch',height:"10ch" } }}
           noValidate

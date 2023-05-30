@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
 
 
 
@@ -146,7 +147,7 @@ export default function ModificaDomanda() {
 
         </div>
 
-
+      <AppAppBarAdmin/>
 
 
 

@@ -41,9 +41,9 @@ function SignIn() {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Sign In
+            Login
           </Typography>
-          <Typography variant="body2" align="center">
+          {/* <Typography variant="body2" align="center">
             {'Not a member yet? '}
             <Link
               href="/premium-themes/onepirate/sign-up/"
@@ -51,8 +51,8 @@ function SignIn() {
               underline="always"
             >
               Sign Up here
-            </Link>
-          </Typography>
+            </Link> */}
+          {/* </Typography> */}
         </React.Fragment>
         <Form
           onSubmit={handleSubmit}
@@ -61,6 +61,8 @@ function SignIn() {
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
             <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
+
+              {/* EMAIL */}
               <Field
                 autoComplete="email"
                 autoFocus
@@ -73,6 +75,7 @@ function SignIn() {
                 required
                 size="large"
               />
+              {/* PASSWORD */}
               <Field
                 fullWidth
                 size="large"
@@ -104,7 +107,7 @@ function SignIn() {
                 href="/sondaggi"
 
               >
-                {submitting || sent ? 'In progress…' : 'Sign In'}
+                {submitting || sent ? 'In progress…' : 'Login'}
               </FormButton>
              
             </Box>
@@ -112,7 +115,7 @@ function SignIn() {
         </Form>
         <Typography align="center">
           <Link underline="always" href="/premium-themes/onepirate/forgot-password/">
-            Forgot password?
+            Hai dimenticato la password ?
           </Link>
         </Typography>
       </AppForm>

@@ -39,7 +39,7 @@ function SignUp() {
       <AppForm>
         <React.Fragment>
           <Typography variant="h3" gutterBottom marked="center" align="center">
-            Sign Up
+            Logout
           </Typography>
           <Typography variant="body2" align="center">
             <Link href="/premium-themes/onepirate/sign-in/" underline="always">
