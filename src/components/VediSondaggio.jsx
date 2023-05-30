@@ -15,8 +15,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
 
-const dataOggi =dayjs();
-console.log(dataOggi);
+import { itIT } from '@mui/x-date-pickers/locales';
+import "dayjs/locale/it"
+
+// const dataOggi =dayjs();
+// console.log(dataOggi);
 
 
 export default function VediSondaggio() {
@@ -29,7 +32,7 @@ export default function VediSondaggio() {
     const [titolo, setTitolo] = useState("");
     const [sottotitolo, setSottotitolo] = useState("");
     const [descrizione, setDescrizione] = useState("");
-    const [dataInizio, setDataInizio] = React.useState(dayjs());
+    const [dataInizio, setDataInizio] = useState("")
     const [dataFine, setDataFine] = useState("");
     const [email, setEmail] = useState("");
     const [stato, setStato] = useState('');
@@ -69,8 +72,8 @@ export default function VediSondaggio() {
             setTitolo(json_ridotto.titolo)
             setSottotitolo(json_ridotto.sottotitolo)
             setDescrizione(json_ridotto.descrizione)
-            setDataInizio(json_ridotto.dataInizio)
-            setDataFine(json_ridotto.dataFine)
+            setDataInizio(dayjs(json_ridotto.dataInizio))
+            setDataFine(dayjs(json_ridotto.dataFine))
             setEmail(json_ridotto.email)
             setStato(json_ridotto.stato)
 
@@ -146,12 +149,13 @@ export default function VediSondaggio() {
                     }}
                 />
                 <div>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='it'
+                    localeText={itIT.components.MuiLocalizationProvider.defaultProps.localeText}>
                         <MobileDatePicker
                             label="Data Inizio"
                             minDate={dayjs('2020-01-01')}
                             maxDate={dayjs('2030-01-01')}
-                            value={dataOggi}
+                            value={dataInizio}
                             format="DD/MM/YYYY"
 
                             onChange={(e) => {
@@ -163,7 +167,7 @@ export default function VediSondaggio() {
                             label="Data Fine"
                             minDate={dayjs('2020-01-01')}
                             maxDate={dayjs('2030-01-01')}
-                            value={dataOggi}
+                            value={dataFine}
                             format="DD/MM/YYYY"
 
                             onChange={(e) => {
