@@ -31,7 +31,8 @@ function SignIn() {
     return errors;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    console.log(e);
     setSent(true);
   };
 
@@ -104,7 +105,7 @@ function SignIn() {
                 color="secondary"
                 fullWidth
                 
-                href="/sondaggi"
+                // href="/sondaggi"
 
               >
                 {submitting || sent ? 'In progress…' : 'Login'}
