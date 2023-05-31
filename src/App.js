@@ -14,15 +14,16 @@ import TabDomande from "./Tabs/TabDomande"
 import TabModificaDomanda from "./Tabs/tabModificaDomanda"
 import TabNuovaDomanda from "./Tabs/TabNuovaDomanda"
 
-
+import Login from "./Login"
 
 
 
 function App() {
+
   return (
 <>
 
-  
+
 <BrowserRouter>
 <Routes>
 
@@ -36,10 +37,7 @@ function App() {
     <Route exact path="/ModificaDomanda/:id" element={<TabModificaDomanda/>} />
     <Route exact path="/Nuovo" element={<TabNuovo/>} />
     <Route exact path="/InserisciDomande/:id" element={<TabNuovaDomanda/>} />
-
-
-
-
+ 
  </Routes>
 </BrowserRouter>
 
