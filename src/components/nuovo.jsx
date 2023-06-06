@@ -11,6 +11,7 @@ import ResponsiveDatePickers from "./Date"
 import { useNavigate } from 'react-router-dom';
 import AppAppBar from '../template/modules/views/AppAppBarAdmin';
 import AppAppBarAdmin from '../template/modules/views/AppAppBarAdmin'
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 
 export default function Nuovo() {
 
@@ -219,9 +220,11 @@ export default function Nuovo() {
           >
             Continua
           </Button>
-
+          
         </div>
       </form>
+      <br></br>
+      {/* <Button onClick={() => navigate(-1) } variant='text'> < ChevronLeftRoundedIcon sx={{ fontSize: 30 }}  /></Button> */}
     </Box>
   );
 }

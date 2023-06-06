@@ -1,25 +1,35 @@
-import * as React from 'react';
-import { Field, Form, FormSpy } from 'react-final-form';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Typography from './modules/components/Typography';
-import AppFooter from './modules/views/AppFooter';
-import AppAppBar from './modules/views/AppAppBar';
-import AppForm from './modules/views/AppForm';
-import { email, required } from './modules/form/validation';
-import RFTextField from './modules/form/RFTextField';
-import FormButton from './modules/form/FormButton';
-import FormFeedback from './modules/form/FormFeedback';
-import withRoot from './modules/withRoot';
+import * as React from "react";
+import { Field, Form, FormSpy } from "react-final-form";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Typography from "./modules/components/Typography";
+import AppFooter from "./modules/views/AppFooter";
+import AppAppBar from "./modules/views/AppAppBar";
+import AppForm from "./modules/views/AppForm";
+import { email, required } from "./modules/form/validation";
+import RFTextField from "./modules/form/RFTextField";
+import FormButton from "./modules/form/FormButton";
+import FormFeedback from "./modules/form/FormFeedback";
+import withRoot from "./modules/withRoot";
+import AuthContext from "../context/AuthProvider";
+import { useContext } from "react";
+// import axios from '../api/axios';
+import { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-
-import { Navigate } from "react-router-dom";
+// const LOGIN_URL='/auth';
 
 function SignIn() {
+  const { setAuth } = useContext(AuthContext);
   const [sent, setSent] = React.useState(false);
+  const [errMsg, setErrMg] = useState("");
+
+  const navigate=useNavigate();
+
+  const errRef = useRef();
 
   const validate = (values) => {
-    const errors = required(['email', 'password'], values);
+    const errors = required(["email", "password"], values);
 
     if (!errors.email) {
       const emailError = email(values.email);
@@ -30,12 +40,48 @@ function SignIn() {
 
     return errors;
   };
+  useEffect(() => {
+    setErrMg("");
+  },[]);
 
   const handleSubmit = (e) => {
     console.log(e);
-    setSent(true);
-  };
+    //setSent(true);
 
+    fetch("http://localhost:3000/API/Login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        "email": e.email,
+        "password": e.password,
+      }),
+    })
+      .then(function (response) {
+        // console.log(response.json());
+        if (!response) {
+          console.log("Il server non risp");
+          setErrMg("Il server non risp");
+        } else if (response?.status === 400) {
+          setErrMg("Manca email o password");
+        } else if (response?.status === 401) {
+          setErrMg("Non autorizzato");
+        } else if (response){ //se i dati sono corretti
+          setErrMg("Loggato")
+        }else{
+          setErrMg("Login fallito");
+        }
+        //errRef.current.focus();
+        return response.json();
+      })
+       .then(function (json) {
+        if(!json.admin){
+          navigate("/")
+        }
+        else{
+          navigate("/sondaggi")}
+        console.log(json);
+      });
+  };
   return (
     <React.Fragment>
       <AppAppBar />
@@ -55,14 +101,27 @@ function SignIn() {
             </Link> */}
           {/* </Typography> */}
         </React.Fragment>
+
+        <p
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
+        >
+          {errMsg}
+        </p>
+
         <Form
           onSubmit={handleSubmit}
           subscription={{ submitting: true }}
           validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
-            <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
-
+            <Box
+              component="form"
+              onSubmit={handleSubmit2}
+              noValidate
+              sx={{ mt: 6 }}
+            >
               {/* EMAIL */}
               <Field
                 autoComplete="email"
@@ -104,18 +163,19 @@ function SignIn() {
                 size="large"
                 color="secondary"
                 fullWidth
-                
-                // href="/sondaggi"
 
+                // href="/sondaggi"
               >
-                {submitting || sent ? 'In progress…' : 'Login'}
+                {submitting || sent ? "In progress…" : "Login"}
               </FormButton>
-             
             </Box>
           )}
         </Form>
         <Typography align="center">
-          <Link underline="always" href="/premium-themes/onepirate/forgot-password/">
+          <Link
+            underline="always"
+            href="/premium-themes/onepirate/forgot-password/"
+          >
             Hai dimenticato la password ?
           </Link>
         </Typography>

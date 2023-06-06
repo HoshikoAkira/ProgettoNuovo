@@ -17,7 +17,7 @@ const Login = () => {
 
         const userRef= useRef();
     
-    const errRef=useRef();
+    const errRef=useRef(); 
 
     const [user,setUser]=useState("");
     const [pwd,setPwd]=useState("");

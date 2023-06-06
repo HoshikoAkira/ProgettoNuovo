@@ -10,6 +10,7 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@m
 import { useNavigate } from 'react-router-dom';
 
 import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 
 
 
@@ -149,11 +150,11 @@ export default function ModificaDomanda() {
 
       <AppAppBarAdmin/>
 
-
-
-        {/*-------------  Bottone aggiorna ed elimina------------- */}
-        <div>
-
+       
+   
+        <Button onClick={() => navigate(-1) } variant='text'> < ChevronLeftRoundedIcon sx={{ fontSize: 30,marginTop: "20px",marginRight: "20px" }}  /></Button>
+         {/*-------------  Bottone aggiorna ed elimina------------- */}
+      
           <Button
             type='submit'
             variant="outlined"
@@ -163,9 +164,7 @@ export default function ModificaDomanda() {
             Aggiorna
           </Button>
 
-
-
-        </div>
+      
         {/* ---------------------Fine bottoni ----------- */}
 
       </form>

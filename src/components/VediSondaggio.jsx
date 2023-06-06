@@ -14,6 +14,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 
 import { itIT } from '@mui/x-date-pickers/locales';
 import "dayjs/locale/it"
@@ -207,6 +208,9 @@ export default function VediSondaggio() {
 
                 <AppAppBarAdmin/>
 
+                <Button onClick={() => navigate(-1) } variant='text'sx={{ marginRight: "20px", marginTop: "20px", marginLeft: "10px" }}> 
+                < ChevronLeftRoundedIcon sx={{ fontSize: 30 }}  />
+                </Button> 
 
                     <Button
                         type='submit'
@@ -225,10 +229,12 @@ export default function VediSondaggio() {
                     >
                         Vedi Domande
                     </Button>
+                  
                 </div>
                 {/* ---------------------Fine bottoni ----------- */}
 
             </form>
+          
         </Box>
 
 

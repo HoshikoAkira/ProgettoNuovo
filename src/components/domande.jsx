@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 
 
 
@@ -56,6 +57,7 @@ const BottoneElimina = (props) => {
 
 
 export default function DataGridDemo() {
+    const navigate=useNavigate();
     const [domande,setDomande ]= useState([]); 
     const { id } = useParams();
  
@@ -132,6 +134,7 @@ export default function DataGridDemo() {
     return (
 
          <Box sx={{ height: 400, width: '100%' }}>
+        
             <DataGrid
                 rows={domande}
                 columns={columns}
@@ -143,6 +146,7 @@ export default function DataGridDemo() {
                 experimentalFeatures={{ newEditingApi: true }}
         />
        <AppAppBarAdmin/>
+       <Button onClick={() => navigate(-1) } variant='text'> < ChevronLeftRoundedIcon sx={{ fontSize: 30 }}  /></Button>
          </Box>
 
     );

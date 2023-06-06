@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { Button, Icon, IconButton } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Delete } from '@mui/icons-material';
@@ -16,9 +17,11 @@ import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
 
 
 
-export default function InserisciDomande() {
 
- 
+export default function InserisciDomande() {
+  const navigate=useNavigate();
+
+
   //
   const { id } = useParams();
 
@@ -127,6 +130,7 @@ export default function InserisciDomande() {
   return (
 
     <div>
+      
       <AppAppBarAdmin/>
 
       <form onSubmit={handleSubmit}>
@@ -171,6 +175,7 @@ export default function InserisciDomande() {
 
           {/* Scelta tra checkbox, radio button e risposte libera */}
           <FormControl>
+            
             <FormLabel id="tipologia">Tipo:</FormLabel>
             <RadioGroup
               row
@@ -211,7 +216,7 @@ export default function InserisciDomande() {
           >
             Conferma Domanda
           </Button>
-
+          
         </Box>
         <br></br>
 
@@ -258,6 +263,7 @@ export default function InserisciDomande() {
               })
             }
           </div>
+          
         </Box>
       </form>
     </div>

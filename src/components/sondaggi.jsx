@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import { useHistory } from 'react-router-dom';
 
 import { DataGrid } from '@mui/x-data-grid';
 
@@ -9,7 +10,10 @@ import { useEffect } from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import AppAppBarAdmin from '../template/modules/views/AppAppBarAdmin';
+
+
 
 
 const BottoneSondaggio = (props) => {
@@ -26,10 +30,7 @@ const BottoneSondaggio = (props) => {
                  
             }}
           
-            // component="button"
-            // variant="text"
-            // size="small"
-            // sx={{ color: "#000" , "&:focus":{color:"#1976d2"}, "&:hover":{color:"#1976d2"}}  }>
+            
 >
             Vedi
              </Button>
@@ -38,25 +39,27 @@ const BottoneSondaggio = (props) => {
 
   };
 
-  const BottoneElimina = (props) => {
-    const navigate=useNavigate();
-    
-   
-      return (
-      
-          <Button
-              variant="outlined" size="small"    onClick={() => {
-                console.log(props.riga.id );
-
-                fetch("http://localhost:3000/API/deleteSondaggioById/" + props.riga.id  ,{method:"delete"})
-                 .then(window.location.reload(true));//Refresc della pagina
-              }}>Elimina
-          </Button>
-      );
-    };
+  
    
 
 export default function DataGridSondaggi() {
+    const BottoneElimina = (props) => {
+        
+          return (
+          
+              <Button
+                  variant="outlined" size="small"    onClick={() => {
+                    console.log(props.riga.id );
+    
+                    fetch("http://localhost:3000/API/deleteSondaggioById/" + props.riga.id  ,{method:"delete"})
+                     .then(fetchSondaggi())
+                  }}>Elimina
+              </Button>
+          );
+        };
+  
+    const navigate=useNavigate();
+
     const [sondaggi,setSondaggi]= useState([]); 
 
     const columns = [
@@ -151,9 +154,10 @@ export default function DataGridSondaggi() {
        
 
     return (
-      
+      <>
          <Box sx={{ height: 400, width: '100%' }}>
-            <AppAppBarAdmin />
+         {/* <Button onClick={() => navigate(-1) } variant='text'> < ChevronLeftRoundedIcon sx={{ fontSize: 30 }}  /></Button> */}
+           
             
             <DataGrid
                 rows={sondaggi}
@@ -164,13 +168,13 @@ export default function DataGridSondaggi() {
                 // checkboxSelection
                 disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
-              
+            
                 
           />   
-         
+          <AppAppBarAdmin />
          </Box>
        
-     
+         </>
 
     );
 }
