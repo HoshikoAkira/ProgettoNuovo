@@ -5,13 +5,27 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from "@mui/material";
-import ResponsiveDatePickers from "./Date"
+
 import { useNavigate } from 'react-router-dom';
-import AppAppBar from '../template/modules/views/AppAppBarAdmin';
+
 import AppAppBarAdmin from '../template/modules/views/AppAppBarAdmin'
-import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+
+import { LocalizationProvider } from '@mui/x-date-pickers';
+
+import dayjs from 'dayjs';
+import { itIT } from '@mui/x-date-pickers/locales';
+import "dayjs/locale/it"
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { MobileDatePicker } from '@mui/x-date-pickers';
+
+
+
+
+
 
 export default function Nuovo() {
 
@@ -21,11 +35,16 @@ export default function Nuovo() {
     titolo: "",
     sottotitolo: "",
     descrizione: "",
-    dataInizio: new Date(),
-    dataFine: new Date(),
-    emailCreatore: "",
+    dataInizio: dayjs(),
+    dataFine: dayjs(),
+    emailCreatore: "admin@telematicainformatica.it",
     stato: "bozza"
   });
+  // const [value, setValue] = React.useState([
+  //   dayjs('2022-04-17'),
+  //   dayjs('2022-04-21'),
+  // ]);
+
 
   const cambiaTitolo = (e) => {
     setDati((params) => {
@@ -51,19 +70,30 @@ export default function Nuovo() {
       }
     })
   };
-  const cambiaDataInizio = (e) => {
+
+
+  const setDataInizio = (e) => {
+    console.log(e.$d)
+
+    if((dati.dataFine)< (dayjs(e.$d))){
+      console.log("if")
+      setDataFine(e)
+    }
+
     setDati((params) => {
       return {
         ...params,
-        dataInizio: e.target.value,
+        dataInizio: (e.$d)
       }
     })
+
   };
-  const cambiaDataFine = (e) => {
+  const setDataFine = (e) => {
+    console.log(e.$d)
     setDati((params) => {
       return {
         ...params,
-        dataFine: e.target.value,
+        dataFine: (e.$d),
       }
     })
   };
@@ -87,39 +117,40 @@ export default function Nuovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(dati);
+    console.log(dati);
+    navigate("/inserisciDomande", { state: dati })
 
-    //Fetch che passa i parametri da passare al db
-    fetch("http://localhost:3000/API/postSondaggio1", {
-      method: "POST", headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        "titolo": dati.titolo,
-        "sottotitolo": dati.sottotitolo,
-        "descrizione": dati.descrizione,
-        "dataInizio": dati.dataInizio,
-        "dataFine": dati.dataFine,
-        "emailCreatore": dati.emailCreatore,
-        "stato": dati.stato
-      })
-    })
-      .then(function (response) {
-        //il DB risponde con un json (il sondaggio appena trovato)
-        return response.json()
-      })
-      .then(function (json) {
-        //prendo l'ID del sondaggio da questo json
-        let idNuovoSondaggio = json._id
-        console.log(idNuovoSondaggio)
-        return idNuovoSondaggio
-      })
-      //Funzione a cui navigare
-      .then((idNuovoSondaggio) =>
-        //passo questo ID alla pagina successiva
-        navigate("/inserisciDomande/" + idNuovoSondaggio)
-      )
-      .catch(function (err) {
-        console.log("errore fetch: " + err.message);
-      })
+    // Fetch che passa i parametri da passare al db
+    // fetch("http://localhost:3000/API/postSondaggio1", {
+    //   method: "POST", headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     "titolo": dati.titolo,
+    //     "sottotitolo": dati.sottotitolo,
+    //     "descrizione": dati.descrizione,
+    //     "dataInizio": dati.dataInizio,
+    //     "dataFine": dati.dataFine,
+    //     "emailCreatore": dati.emailCreatore,
+    //     "stato": dati.stato
+    //   })
+    // })
+    //   .then(function (response) {
+    //     //il DB risponde con un json (il sondaggio appena trovato)
+    //     return response.json()
+    //   })
+    //   .then(function (json) {
+    //     //prendo l'ID del sondaggio da questo json
+    //     let idNuovoSondaggio = json._id
+    //     console.log(idNuovoSondaggio)
+    //     return idNuovoSondaggio
+    //   })
+    //   //Funzione a cui navigare
+    //   .then((idNuovoSondaggio) =>
+    //     //passo questo ID alla pagina successiva
+    //     navigate("/inserisciDomande/"+ idNuovoSondaggio)
+    //   )
+    //   .catch(function (err) {
+    //     console.log("errore fetch: " + err.message);
+    //   })
 
   };
 
@@ -174,10 +205,43 @@ export default function Nuovo() {
           />
         </div>
 
-        {/* METTERE IL DATE PICKER PER INTERO COME IN VEDISONDAGGIO */}
         <div>
-          <ResponsiveDatePickers />
-          <AppAppBarAdmin/>
+
+
+
+
+          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='it'
+            localeText={itIT.components.MuiLocalizationProvider.defaultProps.localeText}>
+            <MobileDatePicker
+              label="Data Inizio"
+              minDate={dayjs()}
+              maxDate={dayjs('2030-01-01')}
+              value={dayjs(dati.dataInizio)}
+              // defaultValue={dayjs()}
+              format="DD/MM/YYYY"
+              onChange={(e) => { setDataInizio(e); }}
+            // renderInput={(params) => <TextField {...params} />}
+            />
+
+            <MobileDatePicker
+              label="Data Fine"
+              minDate={dayjs(dati.dataInizio)}
+              maxDate={dayjs('2030-01-01')}
+              value={dayjs(dati.dataFine)}
+              // defaultValue={dayjs()}
+              format="DD/MM/YYYY"
+
+              onChange={(e) => setDataFine(e)}
+            // renderInput={(params) => <TextField {...params} />}
+            />
+
+          </LocalizationProvider>
+
+        </div>
+
+        <div>
+
+          <AppAppBarAdmin />
           {/* AppAppBarAdmin per richiamare la tab nuovo */}
         </div>
 
@@ -216,15 +280,16 @@ export default function Nuovo() {
             type='submit'
             variant="outlined"
             size="medium"
-            sx={{  marginTop: "20px" ,float:"right" }}
+            sx={{ marginTop: "20px", float: "right" }}
           >
             Continua
           </Button>
-          
+
         </div>
+
       </form>
       <br></br>
-      {/* <Button onClick={() => navigate(-1) } variant='text'> < ChevronLeftRoundedIcon sx={{ fontSize: 30 }}  /></Button> */}
+
     </Box>
   );
 }

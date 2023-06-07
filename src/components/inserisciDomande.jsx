@@ -13,13 +13,17 @@ import { useParams } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Delete } from '@mui/icons-material';
 import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
-
+import Nuovo from "./nuovo"
+import { useLocation } from 'react-router-dom';
 
 
 
 
 export default function InserisciDomande() {
   const navigate=useNavigate();
+  const {state}= useLocation();
+  console.log({state});
+  
 
 
   //
@@ -132,6 +136,7 @@ export default function InserisciDomande() {
     <div>
       
       <AppAppBarAdmin/>
+
 
       <form onSubmit={handleSubmit}>
         <Box sx={{ '& .MuiTextField-root': { m: 1, width: '55ch',height:"10ch" } }}

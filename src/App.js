@@ -36,9 +36,10 @@ function App() {
     <Route exact path="/domande/:id" element={<TabDomande/>} />
     <Route exact path="/ModificaDomanda/:id" element={<TabModificaDomanda/>} />
     <Route exact path="/Nuovo" element={<TabNuovo/>} />
-    <Route exact path="/InserisciDomande/:id" element={<TabNuovaDomanda/>} />
+    {/* <Route exact path="/InserisciDomande/:id" element={<TabNuovaDomanda/>} /> */}
+    <Route exact path="/InserisciDomande/" element={<TabNuovaDomanda/>} />
     <Route exact path="/Login" element={<Login/>} />
- 
+    
  </Routes>
 </BrowserRouter>
 
