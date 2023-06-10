@@ -40,10 +40,7 @@ export default function Nuovo() {
     emailCreatore: "admin@telematicainformatica.it",
     stato: "bozza"
   });
-  // const [value, setValue] = React.useState([
-  //   dayjs('2022-04-17'),
-  //   dayjs('2022-04-21'),
-  // ]);
+ 
 
 
   const cambiaTitolo = (e) => {

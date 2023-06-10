@@ -15,6 +15,7 @@ import { Delete } from '@mui/icons-material';
 import AppAppBarAdmin from "../template/modules/views/AppAppBarAdmin"
 import Nuovo from "./nuovo"
 import { useLocation } from 'react-router-dom';
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 
 
 
@@ -268,7 +269,7 @@ export default function InserisciDomande() {
               })
             }
           </div>
-          
+          <Button onClick={() => navigate(-1) } variant='text'> < ChevronLeftRoundedIcon sx={{ fontSize: 30,marginTop: "20px",marginRight: "20px" }}  /></Button>
         </Box>
       </form>
     </div>

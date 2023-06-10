@@ -146,7 +146,8 @@ export default function DataGridSondaggi() {
         
             
             // console.log("Dati", sondaggi)
-        }).catch(function (err) {
+        })
+        .catch(function (err) {
             console.log("fetch" + err.message);
         
         })

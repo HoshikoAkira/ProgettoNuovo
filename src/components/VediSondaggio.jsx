@@ -89,9 +89,7 @@ export default function VediSondaggio() {
 
     const SubmitAggiorna = (e) => {
         e.preventDefault();
-
-
-        //Fetch che passa i parametri aggiornati al db
+  //Fetch che passa i parametri aggiornati al db
         fetch("http://localhost:3000/API/updateSondaggioById/" + id, {
             method: "PATCH", headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -110,7 +108,7 @@ export default function VediSondaggio() {
             .then(function (json) {
                 console.log(json);
             })
-            .then(navigate(-1)) //Funzione a cui navigare
+            // .then(navigate(-1)) //Funzione a cui navigare
             .catch(function (err) {
                 console.log("errore fetch: " + err.message);
             })
@@ -160,13 +158,17 @@ export default function VediSondaggio() {
                             format="DD/MM/YYYY"
 
                             onChange={(e) => {
-                                setDataInizio(e)
+                               
+                                    setDataInizio(e)
+                                    if((dayjs(dataFine)) < (dayjs(e.$d))){
+                                        setDataFine(e)
+                                    }
                             }}
                             renderInput={(params) => <TextField {...params} />}
                         />
                         <MobileDatePicker
                             label="Data Fine"
-                            minDate={dayjs('2020-01-01')}
+                            minDate={dayjs(dataInizio)}
                             maxDate={dayjs('2030-01-01')}
                             value={dataFine}
                             format="DD/MM/YYYY"

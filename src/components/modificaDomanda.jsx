@@ -68,8 +68,6 @@ export default function ModificaDomanda() {
 
   const SubmitAggiorna = (e) => {
     e.preventDefault();
-
-
     //Fetch che passa i parametri aggiornati al db
     fetch("http://localhost:3000/API/updateDomandaById/" + id, {
       method: "PATCH", headers: { 'Content-Type': 'application/json' },
@@ -86,7 +84,7 @@ export default function ModificaDomanda() {
       .then(function (json) {
         console.log(json);
       })
-      .then(navigate(-1))//Funzione a cui navigare
+      // .then(navigate(-1))//Funzione a cui navigare
       .catch(function (err) {
         console.log("errore fetch: " + err.message);
       })

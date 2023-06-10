@@ -122,7 +122,6 @@ export default function DataGridDemo() {
                 } 
                ))
            setDomande(json_ridotto);
-        
             
             // console.log("Dati", domande)
         }).catch(function (err) {
@@ -130,10 +129,11 @@ export default function DataGridDemo() {
         
         })
         };
-
+    <Button>Ciao</Button>
     return (
 
          <Box sx={{ height: 400, width: '100%' }}>
+            
         
             <DataGrid
                 rows={domande}
@@ -141,8 +141,7 @@ export default function DataGridDemo() {
                 pageSize={5}
                 columnVisibilityModel={{id:false}}//Rendo hidden id
                 rowsPerPageOptions={[5]}
-               
-                disableSelectionOnClick
+               disableSelectionOnClick
                 experimentalFeatures={{ newEditingApi: true }}
         />
        <AppAppBarAdmin/>
